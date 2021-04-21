@@ -1,0 +1,10 @@
+TARGET=main
+CC=riscv64-unknown-elf-gcc
+AR=riscv64-unknown-elf-ar
+CFLAGS=-march=rv64iac -mabi=lp64
+
+all:
+	make -f make_lib
+	riscv64-unknown-elf-gcc $(CFLAGS) main.c libMedian.a -o main
+	$(RM)-f *.a *.o
+	

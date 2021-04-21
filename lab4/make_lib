@@ -1,0 +1,11 @@
+CC=riscv64-unknown-elf-gcc
+AR=riscv64-unknown-elf-ar
+CFLAGS=-march=rv64iac -mabi=lp64
+
+all: lib
+
+lib: median.o
+	$(AR) -rsc libmedian.a median.o
+	$(RM) -f *.o *.s
+median.o: median.c
+	$(CC) $(CFLAGS) -c median.c -o median.o
